@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import ActiveFriendList from './components/ActiveFriendList';
 import NavElements from './components/navelements';
 import LightDarkModeSwitch from './components/test/LightDarkModeSwitch';
 import FeaturedPosts from './components/Home/featuredposts';
@@ -8,28 +9,27 @@ import MiddleBody from './components/MiddleBody';
 export default function HomePage() {
   return (
     <>
-      <main className='relative'>
-        {/* <NavElements /> */}
-          <LightDarkModeSwitch />
-        <div>
-          {/* Add additional content and components */}
-          <div className="flex justify-center">
-              <div className="absolute left-1 bg-red-200 w-1/3 mt-2 border border-black">
-                <p>Stuff</p>
-              </div>
-              <div className=" absolute bg-red-200 w-3/6 m-2">
-                {/* The div class below maps out a list of itemw with overflow on the x axis */}
-                <MapStory />
-                <MiddleBody />
+    {/* grid-flow-col */}
+      <main className="relative">
+        <div className="sticky top-0 left-0 right-0 border border-black h-12 w-full rounded-xl">
+            
+        </div>
+        <div className="flex justify-center mt-2">
+          <div className="ml-8 flex-auto w-2/4  bg-white rounded-xl p-4">           
+            <MapStory />
+            <MiddleBody />
+          </div>
+          <div className="mx-4 flex-auto h-[600px] bg-white rounded-xl p-4">
+            <div>
+              <ActiveFriendList/>
+            </div>
+            <div>
 
-                <p>Stuff</p>
-              </div>
-              <div className="absolute right-1 bg-red-200 w-1/6 h-20 mt-2">
-                
-              </div>
+            </div>
           </div>
         </div>
       </main>
     </>
   );
 }
+

@@ -6,20 +6,19 @@ export default function MiddleBody() {
 
     for (let i = 0; i < imagesCount; i++) {
         // Generate a random image URL
-        images.push(`https://picsum.photos/seed/${Math.random()}/400/400`);
+        images.push(`https://picsum.photos/seed/${Math.random()}/100/200`);
     }
 
     return (
-        <div className="flex overflow-y-auto bg-yellow-200">
+        <div className="flex flex-col overflow-y-auto">
             {images.map((src, index) => (
                 <img 
                     key={index} 
                     src={src} 
                     alt="Random" 
-                    className="h-auto w-full mx-1 rounded-xl" 
-                />             
+                    className="h-50 w-25 my-1" 
+                />
             ))}
-
         </div>
     );
 }
