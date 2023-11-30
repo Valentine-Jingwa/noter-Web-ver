@@ -1,9 +1,6 @@
 "use client";
 import React from 'react';
 import ActiveFriendList from './components/ActiveFriendList';
-import NavElements from './components/navelements';
-import LightDarkModeSwitch from './components/test/LightDarkModeSwitch';
-import FeaturedPosts from './components/Home/featuredposts';
 import MapStory from './components/MapStory';
 import MiddleBody from './components/MiddleBody';
 export default function HomePage() {
