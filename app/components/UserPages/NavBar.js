@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FaHome, FaUsers, FaActivities, FaPlusSquare } from 'react-icons/fa'; // Importing icons
 import HomePage from '../../HomePage';
 import Groups from './Groups';
 import MyActivity from './MyActivity';
@@ -26,10 +25,10 @@ export default function NavigationBar() {
     return (
         <div>
             <div className="button-bar">
-                <button onClick={() => setActivePage('home')}><FaHome /> Home</button>
-                <button onClick={() => setActivePage('groups')}><FaUsers /> Groups</button>
-                <button onClick={() => setActivePage('myActs')}><FaActivities /> My Acts</button>
-                <button onClick={() => setActivePage('post')}><FaPlusSquare /> Post</button>
+                <button onClick={() => setActivePage('home')}> Home</button>
+                <button onClick={() => setActivePage('groups')}> Groups</button>
+                <button onClick={() => setActivePage('myActs')}> My Acts</button>
+                <button onClick={() => setActivePage('post')}> Post</button>
             </div>
             <div className="page-content">
                 {renderPage()}
