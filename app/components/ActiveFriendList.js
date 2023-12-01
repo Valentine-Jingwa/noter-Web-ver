@@ -7,6 +7,20 @@ import { Rnd } from 'react-rnd'; // Make sure to install react-rnd
 const friends = [
     { name: "Alice", id: 1 },
     { name: "Bob", id: 2 },
+    { name: "Charlie", id: 3 },
+    { name: "David", id: 4 },
+    { name: "Eve", id: 5 },
+    { name: "Frank", id: 6 },
+    { name: "Grace", id: 7 },
+    { name: "Heidi", id: 8 },
+    { name: "Ivan", id: 9 },
+    { name: "Judy", id: 10 },
+    { name: "Mallory", id: 11 },
+    { name: "Oscar", id: 12 },
+    { name: "Peggy", id: 13 },
+    { name: "Rupert", id: 14 },
+    { name: "Sybil", id: 15 },
+    { name: "Trudy", id: 16 },
     // ... more friends
 ];
 
@@ -34,7 +48,7 @@ const ChatWindow = ({ friend, onClose }) => {
                 </div>
                 <div className="chat-input">
                     <input type="text" placeholder="Type a message..." />
-                    <button>Send</button>
+                    <button className='VibrantBlue '>Send</button>
                 </div>
             </div>
         </Rnd>
@@ -44,6 +58,7 @@ const ChatWindow = ({ friend, onClose }) => {
 // ActiveFriendList component
 export const ActiveFriendList = () => {
     const [openChats, setOpenChats] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
 
     const openChat = (friend) => {
         if (!openChats.find(chat => chat.id === friend.id)) {
@@ -55,20 +70,39 @@ export const ActiveFriendList = () => {
         setOpenChats(prevChats => prevChats.filter(chat => chat.id !== friendId));
     };
 
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredFriends = friends.filter(friend => 
+        friend.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
-        <div className="active-friend-list">
-            <input type="text" placeholder="Search LesMit" className="search-bar" />
-            <h1 className="text-grey">ActiveFriendList</h1>
-            <div className="friend-list">
-                {friends.map(friend => (
-                    <div key={friend.id} className="friend-item" onClick={() => openChat(friend)}>
-                        {friend.name}
-                    </div>
+        <div>
+            <div className="active-friend-list">
+                <input 
+                    type="text" 
+                    placeholder="Search LesMit" 
+                    className="search-bar" 
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                />
+                <h1 className="text-grey">ActiveFriendList</h1>
+                <div className="friend-list">
+                    {filteredFriends.map(friend => (
+                        <div key={friend.id} className="friend-item rounded" onClick={() => openChat(friend)}>
+                            {friend.name}
+                        </div>
+                    ))}
+                </div>
+                {openChats.map(chat => (
+                    <ChatWindow key={chat.id} friend={chat} onClose={() => closeChat(chat.id)} />
                 ))}
             </div>
-            {openChats.map(chat => (
-                <ChatWindow key={chat.id} friend={chat} onClose={() => closeChat(chat.id)} />
-            ))}
+            <div className="sticky active-friend-list mt-4 p-4">
+
+            </div>
         </div>
     );
 }
