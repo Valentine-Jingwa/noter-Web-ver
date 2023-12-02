@@ -7,7 +7,7 @@ export default function MiddleBody() {
 
     for (let i = 0; i < imagesCount; i++) {
         // Generate a random image URL
-        images.push(`https://picsum.photos/seed/${Math.random()}/100/200`);
+        images.push(`https://picsum.photos/seed/${Math.random()}/1000/900`);
     }
 
     return (

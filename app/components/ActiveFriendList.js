@@ -38,10 +38,10 @@ const ChatWindow = ({ friend, onClose }) => {
             minHeight={300}
             bounds="parent"
         >
-            <div className="chat-window">
+            <div className="chat-window text-black">
                 <header className="chat-header">
                     {friend.name}
-                    <button onClick={onClose}>Close</button>
+                    <button onClick={onClose} className="btn-primary">Close</button>
                 </header>
                 <div className="chat-content">
                     {/* Chat messages will be displayed here */}
@@ -84,7 +84,7 @@ export const ActiveFriendList = () => {
                 <input 
                     type="text" 
                     placeholder="Search LesMit" 
-                    className="search-bar" 
+                    className="search-bar focus:outline-none" 
                     value={searchQuery}
                     onChange={handleSearchChange}
                 />

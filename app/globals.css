@@ -58,12 +58,23 @@ option {
   color: #333333; /* Text color for options */
 }
 
+.btn-primary{
+  padding: 5px;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btn-primary:hover{
+  background-color: rgba(0, 0, 0, 0.045);
+}
+
 .active-friend-list {
   background-color: #f2f2f2;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  color: black;
 }
 
 .search-bar {
@@ -72,6 +83,7 @@ option {
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: black;
 }
 
 .friend-list {
@@ -86,10 +98,12 @@ option {
   border-bottom: 1px solid #ddd;
   cursor: pointer;
   transition: background-color 0.3s;
+  color: black;
 }
 
 .friend-item:hover {
   background-color: rgb(64, 224, 208);
+  color: white;
 }
 
 .chat-window {
@@ -141,4 +155,11 @@ option {
 
 .chat-input button:hover {
   background-color: #0056b3;
+}
+
+.radanimation{
+  background-image: radial-gradient(black, grey, white);
+}
+.radanimation:hover{
+  background-image: radial-gradient( black, white, grey)
 }
