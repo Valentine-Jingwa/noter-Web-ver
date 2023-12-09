@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function MapStory() {
-    const imagesCount = 10; // Number of images to display
+    const imagesCount = 100; // Number of images to display
     const images = [];
 
     for (let i = 0; i < imagesCount; i++) {
@@ -10,7 +10,7 @@ export default function MapStory() {
     }
 
     return (
-        <div className="flex overflow-hidden overflow-x-auto">
+        <div className="flex overflow-hidden w-full overflow-x-auto">
             {images.map((src, index) => (
                 <img 
                     key={index} 

@@ -59,6 +59,7 @@ option {
 }
 
 .btn-primary{
+  margin: 5px;
   padding: 5px;
   color: rgb(0, 0, 0);
   border: none;
@@ -156,6 +157,34 @@ option {
 .chat-input button:hover {
   background-color: #0056b3;
 }
+
+.modal {
+  position: fixed;        /* Stay in place */
+  z-index: 1;             /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;            /* Full width */
+  height: 100%;           /* Full height */
+  overflow: auto;         /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+  display: flex;
+  align-items: center;    /* Align vertically */
+  justify-content: center;/* Align horizontally */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 10px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;     /* Text alignment */
+}
+
 
 .radanimation{
   background-image: radial-gradient(black, grey, white);

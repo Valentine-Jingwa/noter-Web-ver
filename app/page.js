@@ -1,12 +1,13 @@
+'use client';
 import React from 'react';
-import HomePage from './HomePage';
+import HomePage from './components/Home/page';
+import LoginPage from './components/Login/page';
+import { AuthContextProvider } from './components/_utils/auth-context';
 
-function App() {
+export default function Page () {
   return (
-    <div className="App">
-      <HomePage />
-    </div>
+      <AuthContextProvider>
+        <LoginPage />
+      </AuthContextProvider>
   );
 }
-
-export default App;

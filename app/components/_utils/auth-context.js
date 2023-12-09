@@ -1,10 +1,10 @@
 "use client";
-
 import { useContext, createContext, useState, useEffect } from "react";
 import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  GoogleAuthProvider,
   GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "./firebase";
@@ -15,10 +15,17 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // Initialize isLoading
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
-  const gitHubSignIn = () => {
+  // Google sign in
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
+
+  // GitHub sign in
+  const signInWithGitHub = () => {
     const provider = new GithubAuthProvider();
     return signInWithPopup(auth, provider);
   };
@@ -30,21 +37,31 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setIsLoading(false); // Set isLoading to false once the user data is available
+      setIsLoading(false);
       if (!currentUser?.uid) {
-        router.push('/week8');
+        router.push('/components/Home');
       }
     });
     return () => unsubscribe();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, gitHubSignIn, firebaseSignOut, isLoading }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      signInWithGoogle,
+      signInWithGitHub, 
+      firebaseSignOut, 
+      isLoading 
+    }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useUserAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+      throw new Error('useUserAuth must be used within an AuthProvider');
+  }
+  return context;
 };
