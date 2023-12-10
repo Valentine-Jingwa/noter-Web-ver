@@ -33,7 +33,7 @@ export default function NavigationBar({ onNavClick }) {
                 
                 <div className="flex items-center">
                     <Link href="/home" className="hover:text-gray-300">
-                        <Image src="/favicon.ico" width={50} height={50} />   
+                        <Image src="/favicon.ico" alt="logo" width={50} height={50} />   
                     </Link>
                     <span className="text-xl font-bold ml-2">LesMit</span>
                 </div>

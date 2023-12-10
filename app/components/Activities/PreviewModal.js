@@ -1,5 +1,6 @@
 // PreviewModal.js
 import React from 'react';
+import Image from 'next/image'; // Import Image from Next.js
 
 export default function PreviewModal({ data, onClose }) {
     const { title, description, image } = data;
@@ -10,7 +11,7 @@ export default function PreviewModal({ data, onClose }) {
             <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
                 <div className="mb-4">
                     <h2 className="text-xl font-bold">{title}</h2>
-                    {imageUrl && <img src={imageUrl} alt="Activity" className="mb-4" />}
+                    {imageUrl && <Image src={imageUrl} alt="Activity" className="mb-4" />}
                     <p>{description}</p>
                 </div>
                 <button
@@ -23,3 +24,4 @@ export default function PreviewModal({ data, onClose }) {
         </div>
     );
 }
+

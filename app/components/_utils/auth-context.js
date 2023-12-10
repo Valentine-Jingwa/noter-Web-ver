@@ -43,7 +43,8 @@ export const AuthContextProvider = ({ children }) => {
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [router]); 
+  
 
   return (
     <AuthContext.Provider value={{ 

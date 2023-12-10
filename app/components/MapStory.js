@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function MapStory() {
     const imagesCount = 100; // Number of images to display
@@ -12,14 +13,16 @@ export default function MapStory() {
     return (
         <div className="flex w-full overflow-x-auto">
             {images.map((src, index) => (
-                <img 
+                <Image 
                     key={index} 
                     src={src} 
                     alt="Random" 
-                    className="h-50 w-25 mx-1 rounded-xl" 
+                    width={100} // Set the width of the image
+                    height={200} // Set the height of the image
+                    className="mx-1 rounded-xl" 
                 />             
             ))}
-
         </div>
     );
 }
+

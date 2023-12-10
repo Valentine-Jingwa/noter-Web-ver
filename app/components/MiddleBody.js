@@ -13,7 +13,7 @@ export default function MiddleBody() {
     return (
         <div className="flex flex-col overflow-y-auto scroll-smooth">
             {images.map((src, index) => (
-                <img 
+                <Image 
                     key={index} 
                     src={src} 
                     alt="Random" 

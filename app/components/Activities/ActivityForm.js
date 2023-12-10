@@ -1,5 +1,6 @@
 // ActivityForm.js
 import React, { useState, useCallback } from 'react';
+import Image from 'next/image';
 
 export default function ActivityForm({ onSubmit }) {
     const [title, setTitle] = useState('');
@@ -48,7 +49,7 @@ export default function ActivityForm({ onSubmit }) {
                 className="border-dashed border-2 border-gray-300 rounded-md p-4 text-center"
             >
                 {previewUrl ? (
-                    <img src={previewUrl} alt="Preview" className="mx-auto h-20" />
+                    <Image src={previewUrl} alt="Preview" className="mx-auto h-20" />
                 ) : (
                     <p>Drag and drop an image here, or click to select a file</p>
                 )}
