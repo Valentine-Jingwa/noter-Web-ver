@@ -13,7 +13,7 @@ import NearbyActivities from '../Activities/NearbyActivities';
 import CreateActivity from '../Activities/CreateActivity';
 
 export default function Page() {
-  const [currentView, setCurrentView] = useState('nearbyActivities');
+  const [currentView, setCurrentView] = useState('home');
 
   const handleNavClick = (view) => {
     setCurrentView(view);
