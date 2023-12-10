@@ -10,7 +10,7 @@ export default function MapStory() {
     }
 
     return (
-        <div className="flex overflow-hidden w-full overflow-x-auto">
+        <div className="flex w-full overflow-x-auto">
             {images.map((src, index) => (
                 <img 
                     key={index} 

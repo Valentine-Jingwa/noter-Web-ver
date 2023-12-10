@@ -6,7 +6,7 @@ import { BellIcon, InboxIcon, UserCircleIcon, DotsHorizontalIcon, HomeIcon, MapI
 // import { Bell, Inbox, UserCircle, DotsHorizontal, Home } from '@heroicons/react/solid';
 
 
-export default function NavigationBar() {
+export default function NavigationBar({ onNavClick }) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
 
@@ -39,19 +39,19 @@ export default function NavigationBar() {
                 </div>
                 <div className="hidden md:flex space-x-12">
 
-                    <Link href="/home" className="hover:text-blue-400 flex flex-col items-center space-x-2">
+                    <div onClick={() => onNavClick('home')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
                         <HomeIcon className="h-6 w-6" />
                         Home
-                    </Link>
-                    <Link href="/about" className="hover:text-blue-400 flex flex-col items-center space-x-2">
+                    </div>
+                    <div onClick={() => onNavClick('community')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
                         <UserGroupIcon className="h-6 w-6" />
-                        Community</Link>
-                    <Link href="/services" className="hover:text-blue-400 flex flex-col items-center space-x-2">
+                        Community</div>
+                    <div onClick={() => onNavClick('nearbyActivities')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
                         <MapIcon className="h-6 w-6" />
-                        Near By activities</Link>
-                    <Link href="/contact" className="hover:text-blue-400 flex flex-col items-center space-x-2">
+                        Near By activities</div>
+                    <div onClick={() => onNavClick('createActivities')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
                         <FireIcon className="h-6 w-6" />
-                        Create Activity</Link>
+                        Create Activity</div>
                 </div>
 
                 <div className="flex items-center space-x-10">
