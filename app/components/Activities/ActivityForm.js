@@ -4,6 +4,9 @@ import Image from 'next/image';
 
 export default function ActivityForm({ onSubmit }) {
     const [title, setTitle] = useState('');
+    const [category, setCategory] = useState('');
+    const [location, setLocation] = useState('');
+    const [status, setStatus] = useState('public'); // default to 'public'
     const [description, setDescription] = useState('');
     const [image, setImage] = useState(null);
     const [previewUrl, setPreviewUrl] = useState('');
@@ -25,11 +28,11 @@ export default function ActivityForm({ onSubmit }) {
             setPreviewUrl(URL.createObjectURL(file));
         }
     }, []);
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ title, description, image });
+        onSubmit({ title, category, location, status, description, image });
     };
+
 
     return (
         <form onSubmit={handleSubmit}>
@@ -42,6 +45,31 @@ export default function ActivityForm({ onSubmit }) {
                     onChange={(e) => setTitle(e.target.value)}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
+            </div>
+                {/* Category input */}
+                <div className="mb-4">
+                <label htmlFor="category" className="block text-gray-700 text-sm font-bold mb-2">Category:</label>
+                <input
+                    type="text"
+                    id="category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+            {/* Location input */}
+            {/* Status select */}
+            <div className="mb-4">
+                <label htmlFor="status" className="block text-gray-700 text-sm font-bold mb-2">Status:</label>
+                <select
+                    id="status"
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                >
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
             </div>
             <div 
                 onDragOver={(e) => e.preventDefault()} 

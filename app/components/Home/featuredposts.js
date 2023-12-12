@@ -2,8 +2,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDownIcon, XIcon, UserCircleIcon } from "@heroicons/react/outline";
 import { ArrowsExpandIcon } from '@heroicons/react/solid';
+import { db } from '../_utils/firebase'; // Import db from your firebase config file
 
-export default function FeaturedPosts () {
+
+export default function FeaturedPosts() {
+    const [activities, setActivities] = useState([]);
     const [isExpanded, setIsExpanded] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,6 +25,12 @@ export default function FeaturedPosts () {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
                 closeModal();
             }
+            const unsubscribe = db.collection("myCollection").onSnapshot(snapshot => {
+                const activities = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setActivities(activities);
+            });
+    
+            return () => unsubscribe(); // Clean up on unmount
         };
 
         document.addEventListener('mousedown', handleClickOutside);
