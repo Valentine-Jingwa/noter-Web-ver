@@ -14,7 +14,7 @@ export default function CreateActivity() {
     };
 
     return (
-        <div className="flex justify-center mt-2">
+        <div className="flex justify-center mt-2 text-black">
             <div className="mx-12 w-8/12 bg-white rounded-xl p-4">
                 <h1 className="text-center text-xl font-bold">Create Activity</h1>
                 <ActivityForm onSubmit={handleSubmit} />

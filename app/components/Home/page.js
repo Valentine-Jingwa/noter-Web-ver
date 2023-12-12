@@ -11,6 +11,7 @@ import HomeLayout from './HomeLayout';
 import Community from '../Community/Community';
 import NearbyActivities from '../Activities/NearbyActivities';
 import CreateActivity from '../Activities/CreateActivity';
+import { AuthContextProvider } from '../_utils/auth-context';
 
 export default function Page() {
   const [currentView, setCurrentView] = useState('home');
@@ -23,7 +24,7 @@ export default function Page() {
     <>
     {/* grid-flow-col */}
       <main className="relative">
-        <Navbar onNavClick={handleNavClick}/>
+          <Navbar onNavClick={handleNavClick}/>
         {currentView === 'home' && <HomeLayout />}
         {currentView === 'community' && <Community />}
         {currentView === 'nearbyActivities' && <NearbyActivities />}

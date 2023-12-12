@@ -1,17 +1,30 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BellIcon, InboxIcon, UserCircleIcon, DotsHorizontalIcon, HomeIcon, MapIcon, UserGroupIcon, FireIcon} from '@heroicons/react/solid';
-// import { Bell, Inbox, UserCircle, DotsHorizontal, Home } from '@heroicons/react/solid';
+import { signOut } from 'firebase/auth';
+import { auth } from '../_utils/firebase'; // Adjust the import path
+
 
 
 export default function NavigationBar({ onNavClick }) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
 
+
     const dropdownRef = useRef(null);
     const notificationRef = useRef(null);
+
+    // Function to handle logout
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            // Handle successful sign out here (e.g., redirect to login page)
+        }).catch((error) => {
+            // Handle errors here
+            console.error("Error signing out: ", error);
+        });
+    };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -64,14 +77,20 @@ export default function NavigationBar({ onNavClick }) {
                         )}
                     </div>
 
+
                     <div ref={dropdownRef}>
-                        <DotsHorizontalIcon className="h-6 w-6 cursor-pointer hover:text-blue-400" onClick={() => setShowDropdown(!showDropdown)} />
-                        {showDropdown && (
-                            <div className="absolute right-2 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20 h-[250px]">
-                                {/* Dropdown items */}
-                            </div>
-                        )}
-                    </div>
+                    <DotsHorizontalIcon className="h-6 w-6 cursor-pointer hover:text-blue-400" onClick={() => setShowDropdown(!showDropdown)} />
+                    {showDropdown && (
+                        <div className="absolute right-2 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20 h-[250px]">
+                            {/* Dropdown items */}
+                            <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                            <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Account</a>
+                            <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <hr className="my-1"/>
+                            <button className="block px-4 py-2 text-sm text-white bg-red-700 rounded hover:bg-red-900 w-full text-left" onClick={handleLogout}>Logout</button>
+                        </div>
+                    )}
+                </div>
                 </div>
             </div>
         </>
