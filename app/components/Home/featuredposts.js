@@ -25,7 +25,7 @@ export default function FeaturedPosts() {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
                 closeModal();
             }
-            const unsubscribe = db.collection("myCollection").onSnapshot(snapshot => {
+            const unsubscribe = db.collection("MyPostCollection").onSnapshot(snapshot => {
                 const activities = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 setActivities(activities);
             });

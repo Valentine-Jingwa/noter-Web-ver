@@ -48,24 +48,24 @@ export default function NavigationBar({ onNavClick }) {
                     <Link href="/home" className="hover:text-gray-300">
                         <Image src="/favicon.ico" alt="logo" width={50} height={50} />   
                     </Link>
-                    <span className="text-xl font-bold ml-2">LesMit</span>
+                    <h1 className="text-xl font-bold ml-2">LesMit</h1>
                 </div>
-                <div className="hidden md:flex space-x-12">
+                <ul className="hidden md:flex space-x-12">
 
-                    <div onClick={() => onNavClick('home')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
+                    <li onClick={() => onNavClick('home')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
                         <HomeIcon className="h-6 w-6" />
                         Home
-                    </div>
-                    <div onClick={() => onNavClick('community')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
+                    </li>
+                    <li onClick={() => onNavClick('community')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
                         <UserGroupIcon className="h-6 w-6" />
-                        Community</div>
-                    <div onClick={() => onNavClick('nearbyActivities')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
+                        Community</li>
+                    <li onClick={() => onNavClick('nearbyActivities')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
                         <MapIcon className="h-6 w-6" />
-                        Near By activities</div>
-                    <div onClick={() => onNavClick('createActivities')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
+                        Near By activities</li>
+                    <li onClick={() => onNavClick('createActivities')} className="cursor-pointer hover:text-blue-400 flex flex-col items-center space-x-2">
                         <FireIcon className="h-6 w-6" />
-                        Create Activity</div>
-                </div>
+                        Create Activity</li>
+                </ul>
 
                 <div className="flex items-center space-x-10">
                     <div ref={notificationRef}>

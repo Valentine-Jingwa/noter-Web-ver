@@ -24,7 +24,9 @@ export default function Page() {
     <>
     {/* grid-flow-col */}
       <main className="relative">
+        <AuthContextProvider>
           <Navbar onNavClick={handleNavClick}/>
+        </AuthContextProvider>
         {currentView === 'home' && <HomeLayout />}
         {currentView === 'community' && <Community />}
         {currentView === 'nearbyActivities' && <NearbyActivities />}
